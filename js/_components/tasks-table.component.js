@@ -66,9 +66,11 @@ window.TasksTableComponent = (function (window) {
                 }
                 var line = getLineElement(task);
                 tableEl.append(line);
-                line.addEventListener('click', function(){
-                   alert(task.TxtCivilName);
-                });
+                (function(task) {
+                    line.addEventListener('click', function () {
+                        alert(task.TxtCivilName);
+                    });
+                })(task)
             }
             tableEl.append(getFooterElement(self.aggregatedValues));
             return tableEl;
