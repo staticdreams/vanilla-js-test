@@ -70,7 +70,7 @@ window.TasksTableComponent = (function (window) {
                    alert(task.TxtCivilName);
                 });
             }
-            tableEl.append(getFooterElement(self.aggregatedValues));
+            // tableEl.append(getFooterElement(self.aggregatedValues));
             return tableEl;
         }
 
@@ -133,7 +133,7 @@ window.TasksTableComponent = (function (window) {
         }
 
         function setTasks(tasks) {
-            this.tasks = tasks;
+            self.tasks = tasks;
             this.aggregatedValues = getAggregatedValues(tasks);
         }
 
