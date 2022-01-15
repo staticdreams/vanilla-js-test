@@ -19,7 +19,7 @@ window.TasksTableComponent = (function (window) {
                 property: 'NumDaysRequested',
                 defaultValue: '0',
                 aggregateFn: (item) => {
-                    return item['NumDaysRequested'];
+                    return isNaN(item['NumDaysRequested']) ? 0 : item['NumDaysRequested'];
                 },
                 aggregateLabel: 'Total (in days) : ',
             },
@@ -70,7 +70,7 @@ window.TasksTableComponent = (function (window) {
                    alert(task.TxtCivilName);
                 });
             }
-            // tableEl.append(getFooterElement(self.aggregatedValues));
+            tableEl.append(getFooterElement(self.aggregatedValues));
             return tableEl;
         }
 
@@ -134,7 +134,7 @@ window.TasksTableComponent = (function (window) {
 
         function setTasks(tasks) {
             self.tasks = tasks;
-            this.aggregatedValues = getAggregatedValues(tasks);
+            self.aggregatedValues = getAggregatedValues(tasks);
         }
 
         /**
