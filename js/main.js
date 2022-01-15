@@ -4,15 +4,14 @@
     var tasksTable;
     var companiesList = [];
 
-    function init() {
+    async function init() {
         tasksTable = new TasksTableComponent();
 
         document.getElementById('refreshBtn').addEventListener('click', function () {
             updateTable();
         });
 
-        updateCompanies()
-        updateTable();
+        await updateCompanies().then(updateTable)
     }
 
     function updateTable() {
@@ -33,8 +32,8 @@
         }
     }
 
-    function updateCompanies() {
-        return dataService.getCompanies().then(function (companies) {
+    async function updateCompanies() {
+        return await dataService.getCompanies().then(function (companies) {
             companiesList = companies;
         });
     }
